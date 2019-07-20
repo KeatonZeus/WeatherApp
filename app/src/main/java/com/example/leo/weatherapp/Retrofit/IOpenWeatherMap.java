@@ -11,5 +11,5 @@ public interface IOpenWeatherMap {
     Observable<WeatherResult> getWeatherByLating(@Query("lat") String lat,
                                                  @Query("lon") String lon,
                                                  @Query("appid") String appid,
-                                                 @Query("units") String unit);
+                                                 @Query("units") String unit); //單位
 }
