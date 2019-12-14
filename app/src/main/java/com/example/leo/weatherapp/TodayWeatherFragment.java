@@ -82,11 +82,13 @@ public class TodayWeatherFragment extends Fragment {
         return itemView;
     }
 
+    //RxJava
     private void getWeatherInformation() {
-        compositeDisposable.add(mService.getWeatherByLating(
-                String.valueOf(Common.current_location.getLatitude()),
-                String.valueOf(Common.current_location.getLongitude()),
-                Common.APP_ID,
+        compositeDisposable.add(
+                mService.getWeatherByLating(
+                    String.valueOf(Common.current_location.getLatitude()),
+                    String.valueOf(Common.current_location.getLongitude()),
+                    Common.APP_ID,
                 "metric")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -123,4 +125,10 @@ public class TodayWeatherFragment extends Fragment {
         );
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        compositeDisposable.clear();
+    }
 }

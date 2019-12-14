@@ -12,8 +12,8 @@ public class RetrofitClient {
             instance = new Retrofit.Builder()
                     .baseUrl("https://api.openweathermap.org/data/2.5/")
                     .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .build();
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
         return instance;
     }
 }
